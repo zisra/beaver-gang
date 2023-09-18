@@ -9,7 +9,11 @@ export class ActionListener {
 		this.refresh();
 	}
 
-	private cleanup(name: string, event: string, callback: () => void) {
+	private cleanup(
+		name: string,
+		event: string,
+		callback: (event?: Event) => void
+	) {
 		Array.from(this.watchedElements).forEach((element) => {
 			const elementAction = element.getAttribute('data-action');
 			if (elementAction === name) {
@@ -30,18 +34,25 @@ export class ActionListener {
 		});
 	}
 
-	on(name: string, event: string, callback: () => void) {
+	on<K extends keyof HTMLElementEventMap>(
+		name: string,
+		event: K,
+		callback: (event: HTMLElementEventMap[K]) => void
+	) {
 		Array.from(this.watchedElements).forEach((element) => {
 			const elementAction = element.getAttribute('data-action');
 			if (elementAction === name) {
-				element.addEventListener(event, callback);
+				element.addEventListener(event, (event) => {
+					callback(event as HTMLElementEventMap[K]);
+				});
 			}
 		});
 
 		return {
 			remove: () => {
-				this.cleanup(name, event, callback);
+				this.cleanup(name, event, callback as () => void);
 			},
+
 			refresh: () => {
 				this.refresh();
 				this.on(name, event, callback);

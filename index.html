@@ -9,7 +9,7 @@
 	<body>
 		<div data-view="/">
 			<h1 class="text-4xl text-center mt-4 font-bold">Points calculator</h1>
-			<div class="text-center space-x-4 mt">
+			<div class="text-center space-x-4 mt-4">
 				<button
 					data-action="viewHistory"
 					class="border-gray-800 py-2 px-4 rounded-md bg-zinc-200 hover:bg-zinc-300 duration-100"
@@ -27,6 +27,53 @@
 
 		<div data-view="/newGame">
 			<h1 class="text-4xl text-center mt-4 font-bold">New game</h1>
+			<div class="text-center space-x-4 mt-4">
+				<button
+					class="border-gray-800 py-2 px-4 rounded-md bg-zinc-200 hover:bg-zinc-300 duration-100"
+				>
+					Add player
+				</button>
+				<button
+					class="border-gray-800 py-2 px-4 rounded-md bg-zinc-200 hover:bg-zinc-300 duration-100"
+				>
+					Add round
+				</button>
+				<button
+					class="border-gray-800 py-2 px-4 rounded-md bg-blue-500 hover:bg-blue-600 duration-100 text-white"
+				>
+					Save game
+				</button>
+			</div>
+			<table class="mx-auto text-center text-xl mt-8">
+				<thead>
+					<tr>
+						<th>Player 1</th>
+						<th>Player 2</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<input
+								type="number"
+								data-action="setPlayer1"
+								class="border-gray-800 py-2 px-4 rounded-md bg-zinc-200 hover:bg-zinc-300 duration-100"
+							/>
+						</td>
+						<td>
+							<input
+								type="number"
+								data-action="setPlayer2"
+								class="border-gray-800 py-2 px-4 rounded-md bg-zinc-200 hover:bg-zinc-300 duration-100"
+							/>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<td>Total: 3</td>
+					<td>Total: 3</td>
+				</tfoot>
+			</table>
 		</div>
 
 		<div data-view="/history">
