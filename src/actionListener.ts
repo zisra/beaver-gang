@@ -9,14 +9,11 @@ export class ActionListener {
 		this.refresh();
 	}
 
-	private cleanup(
-		action: { name: string; event: string },
-		callback: () => void
-	) {
+	private cleanup(name: string, event: string, callback: () => void) {
 		Array.from(this.watchedElements).forEach((element) => {
 			const elementAction = element.getAttribute('data-action');
-			if (elementAction === action.name) {
-				element.removeEventListener(action.event, callback);
+			if (elementAction === name) {
+				element.removeEventListener(event, callback);
 			}
 		});
 	}
@@ -33,26 +30,26 @@ export class ActionListener {
 		});
 	}
 
-	on(action: { name: string; event: string }, callback: () => void) {
+	on(name: string, event: string, callback: () => void) {
 		Array.from(this.watchedElements).forEach((element) => {
 			const elementAction = element.getAttribute('data-action');
-			if (elementAction === action.name) {
-				element.addEventListener(action.event, callback);
+			if (elementAction === name) {
+				element.addEventListener(event, callback);
 			}
 		});
 
 		return {
 			remove: () => {
-				this.cleanup(action, callback);
+				this.cleanup(name, event, callback);
 			},
 			refresh: () => {
 				this.refresh();
-				this.on(action, callback);
+				this.on(name, event, callback);
 			},
 		};
 	}
 
-	off(action: { name: string; event: string }, callback: () => void) {
-		this.cleanup(action, callback);
+	off(name: string, event: string, callback: () => void) {
+		this.cleanup(name, event, callback);
 	}
 }
