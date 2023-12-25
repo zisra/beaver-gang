@@ -93,6 +93,7 @@ actionListener.on('saveGame', 'click', () => {
 defineRoute('/', showView);
 defineRoute('/newGame', showView);
 defineRoute('/history', (e) => {
+	console.log(getMatches());
 	showView(e);
 });
 
