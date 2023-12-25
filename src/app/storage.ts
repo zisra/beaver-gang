@@ -1,4 +1,4 @@
-import { Match } from './types';
+import { Match } from '@/app/types';
 
 function encode(obj: Match[]) {
 	const string = JSON.stringify(obj);

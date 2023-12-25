@@ -1,17 +1,19 @@
 import '../index.css';
+
 import {
 	defineRoute,
 	defineErrorRoute,
 	defineNotFoundRoute,
-} from '../lib/router';
-import { showView, goTo } from '../lib/views';
-import { ActionListener } from '../lib/actionListener';
-import { Player, Round } from './types';
-import { addMatch, getMatches } from './storage';
-import { onValueChange } from '../lib/trackVariable';
+} from '@/lib/router';
+import { showView, goTo } from '@/lib/views';
+import { ActionListener } from '@/lib/actionListener';
+import { Player, Round } from '@/app/types';
+import { addMatch, getMatches } from '@/app/storage';
+import { onValueChange } from '@/lib/trackVariable';
 
 const actionListener = new ActionListener(document);
 
+// Declare reactive variables
 const players = onValueChange<Player[]>([], () => {
 	console.log([...players]);
 });
@@ -20,6 +22,7 @@ const rounds = onValueChange<Round[]>([], () => {
 	console.log([...rounds]);
 });
 
+// Action listeners
 actionListener.on('newGame', 'click', () => {
 	goTo('/newGame');
 });
