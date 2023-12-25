@@ -29,16 +29,19 @@
 			<h1 class="text-4xl text-center mt-4 font-bold">New game</h1>
 			<div class="text-center space-x-4 mt-4">
 				<button
+					data-action="addPlayer"
 					class="border-gray-800 py-2 px-4 rounded-md bg-zinc-200 hover:bg-zinc-300 duration-100"
 				>
 					Add player
 				</button>
 				<button
+					data-action="addRound"
 					class="border-gray-800 py-2 px-4 rounded-md bg-zinc-200 hover:bg-zinc-300 duration-100"
 				>
 					Add round
 				</button>
 				<button
+					data-action="saveGame"
 					class="border-gray-800 py-2 px-4 rounded-md bg-blue-500 hover:bg-blue-600 duration-100 text-white"
 				>
 					Save game
@@ -52,20 +55,37 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr data-index="0">
 						<td>
 							<input
 								type="number"
-								data-action="setPlayer1"
+								min="0"
+								max="36"
 								class="border-gray-800 py-2 px-4 rounded-md bg-zinc-200 hover:bg-zinc-300 duration-100"
 							/>
 						</td>
 						<td>
 							<input
+								min="0"
+								max="36"
 								type="number"
-								data-action="setPlayer2"
 								class="border-gray-800 py-2 px-4 rounded-md bg-zinc-200 hover:bg-zinc-300 duration-100"
 							/>
+						</td>
+						<td>
+							<svg
+								data-action="deleteRound"
+								width="24"
+								height="24"
+								fill="none"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="m4.21 4.387.083-.094a1 1 0 0 1 1.32-.083l.094.083L12 10.585l6.293-6.292a1 1 0 1 1 1.414 1.414L13.415 12l6.292 6.293a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083L12 13.415l-6.293 6.292a1 1 0 0 1-1.414-1.414L10.585 12 4.293 5.707a1 1 0 0 1-.083-1.32l.083-.094-.083.094Z"
+									fill="#000000"
+								/>
+							</svg>
 						</td>
 					</tr>
 				</tbody>
@@ -88,6 +108,6 @@
 			<h1 class="text-4xl text-center mt-4 font-bold">Not found</h1>
 		</div>
 
-		<script type="module" src="/src/index.ts"></script>
+		<script type="module" src="/src/app/index.ts"></script>
 	</body>
 </html>
